@@ -17,12 +17,12 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - yarn install
+      - npm install
   build:
     commands:
-      - yarn run build
+      - npm start
 artifacts:
-  base_directory: build
+  base_directory: dist
   files:
     - '**/*'
 cache:
