@@ -15,16 +15,16 @@ version: 0.2
      # - variable
   #git-credential-helper: yes
 phases:
-	preBuild:
-		commands:
-			- yarn install
-	build:
-		commands:
-			- yarn run build
+  preBuild:
+    commands:
+      - yarn install
+  build:
+    commands:
+      - yarn run build
 artifacts:
-	baseDirectory: build
-	files:
-		- '**/*'
+  baseDirectory: build
+  files:
+    - '**/*'
 cache:
-	paths:
-		- node_modules/**/*
+  paths:
+    - node_modules/**/*
