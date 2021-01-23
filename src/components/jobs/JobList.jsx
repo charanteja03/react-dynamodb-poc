@@ -9,10 +9,13 @@ function JobList({ jobsState, getJobsAction }) {
   const [statusFilter, setStatusFilter] = useState();
 
   useEffect(() => {
+    console.log("calling get jobs API")
     getJobsAction();
+    console.log("got response from the API")
   }, []);
 
   const { jobs, loading, error } = jobsState;
+  console.log(jobs)
 
   const visibleJobs = jobs.filter(isJobVisible);
 

@@ -39,19 +39,20 @@ export const getJobsError = (error) => ({
 
 export const getJobsAction = () => {
   return (dispatch) => {
+    console.log("calling the API")
     dispatch(getJobsFetch());
-    dynamoClient.scan(
-      {
-        TableName: "jobs",
-      },
-      function (error, data) {
-        if (error) {
-          dispatch(getJobsError(error));
-        } else {
-          dispatch(getJobsSuccess(data.Items));
-        }
-      }
-    );
+    fetch("https://90bf40fa5h.execute-api.us-east-1.amazonaws.com/DevelopmentReactSampleApp/getjobs", {
+      "method": "GET"
+    })
+    // .then(data => response.json())
+    .then(data => {
+      dispatch(getJobsSuccess(data));
+      console.log(data)
+    })
+    .catch(error => {
+      dispatch(getJobsError(error));
+      console.log("error", error)
+    });
   };
 };
 
